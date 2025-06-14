@@ -26,6 +26,11 @@ const ChartBox = styled.div`
   & .recharts-pie-label-text {
     font-weight: 600;
   }
+  grid-column: 1 / -1;
+
+  /* @media (min-width: 768px) {
+    grid-column: 3 / span 2;
+  } */
 `;
 const EmptyState = styled.div`
   height: 250px;
@@ -156,19 +161,20 @@ function DurationChart({ confirmedStays }) {
   // console.log(data);
   return (
     <ChartBox>
-      <Heading as="h2">Stay Duration summary</Heading>
+      <Heading as="h2">Stay Duration Summary</Heading>
       {hasData ? (
-        <ResponsiveContainer width="100%" height={250}>
-          <PieChart width={730} height={250}>
+        <ResponsiveContainer width="100%" height={300}>
+          <PieChart>
             <Pie
               data={data}
               nameKey="duration"
               dataKey="value"
-              innerRadius={80}
-              outerRadius={110}
-              cx="40%"
-              cy="50%"
-              paddingAngle={3}
+              innerRadius={60}
+              outerRadius={90}
+              paddingAngle={2}
+              label={({ duration, percent }) =>
+                `${duration}: ${(percent * 100).toFixed(0)}%`
+              }
             >
               {data.map((entry) => (
                 <Cell
@@ -178,15 +184,28 @@ function DurationChart({ confirmedStays }) {
                 />
               ))}
             </Pie>
-
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                fontSize: "0.85rem",
+                padding: "0.5rem",
+                borderRadius: "var(--border-radius-sm)",
+              }}
+            />
             <Legend
-              verticalAlign="middle"
-              align="right"
-              width="30%"
-              layout="vertical"
-              iconSize={15}
+              layout="horizontal"
+              verticalAlign="bottom"
+              align="center"
+              wrapperStyle={{
+                paddingTop: "1rem",
+                fontSize: "0.85rem",
+              }}
+              iconSize={12}
               iconType="circle"
+              formatter={(value) => (
+                <span style={{ fontSize: "0.8rem" }}>
+                  {value.length > 10 ? `${value.substring(0, 8)}...` : value}
+                </span>
+              )}
             />
           </PieChart>
         </ResponsiveContainer>

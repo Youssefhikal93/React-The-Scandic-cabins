@@ -12,6 +12,8 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
+      </Row>
+      <Row type="horizontal">
         <CabinTableOperations />
       </Row>
 

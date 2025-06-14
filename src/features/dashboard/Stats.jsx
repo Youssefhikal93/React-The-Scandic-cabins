@@ -4,12 +4,12 @@ import { HiOutlineBanknotes, HiOutlineCalendarDays } from "react-icons/hi2";
 import { formatCurrency } from "../../utils/helpers";
 import styled from "styled-components";
 
-// const StatsContainer = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-//   gap: 1.6rem;
-//   width: 100%;
-// `;
+const StatsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1.6rem;
+  width: 100%;
+`;
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
   // 1.

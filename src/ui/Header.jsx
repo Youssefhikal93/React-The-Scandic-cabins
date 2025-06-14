@@ -24,15 +24,20 @@ import UserAvatar from "../features/authentication/UserAvatar";
 
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
-  padding: 1.2rem 4.8rem;
+  padding: 1.2rem 2.4rem;
   border-bottom: 1px solid var(--color-grey-100);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Changed from flex-end to space-between */
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 7.2rem; /* Fixed height for consistent layout */
+  height: 7.2rem;
+  gap: 2.6rem;
+
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+  }
 `;
 
 const MenuButton = styled.button`
@@ -44,15 +49,20 @@ const MenuButton = styled.button`
   padding: 0.5rem;
   border-radius: 0.4rem;
   transition: background-color 0.2s;
-  display: block; /* Show by default on mobile */
+  display: block;
+  margin-left: auto; /* Push to the right */
 
   &:hover {
     background-color: var(--color-grey-100);
   }
 
-  /* Hide on medium screens and larger */
   @media (min-width: 768px) {
     display: none;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    padding: 0.3rem;
   }
 `;
 
