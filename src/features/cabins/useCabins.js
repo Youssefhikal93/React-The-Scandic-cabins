@@ -18,36 +18,36 @@ export function useCabins() {
   };
 }
 
-export function useCabinsInfinite() {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-    isLoading,
-  } = useInfiniteQuery({
-    queryKey: ["cabins-infinite"],
-    queryFn: getCabins,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+// export function useCabinsInfinite() {
+//   const {
+//     data,
+//     error,
+//     fetchNextPage,
+//     hasNextPage,
+//     isFetching,
+//     isFetchingNextPage,
+//     status,
+//     isLoading,
+//   } = useInfiniteQuery({
+//     queryKey: ["cabins-infinite"],
+//     queryFn: getCabins,
+//     initialPageParam: 0,
+//     getNextPageParam: (lastPage) => lastPage.nextPage,
+//   });
 
-  // Flatten all pages into a single array
-  const cabins = data?.pages?.flatMap((page) => page.cabins) || [];
-  const totalCount = data?.pages?.[0]?.count || 0;
+//   // Flatten all pages into a single array
+//   const cabins = data?.pages?.flatMap((page) => page.cabins) || [];
+//   const totalCount = data?.pages?.[0]?.count || 0;
 
-  return {
-    cabins,
-    totalCount,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    isLoading,
-    status,
-  };
-}
+//   return {
+//     cabins,
+//     totalCount,
+//     error,
+//     fetchNextPage,
+//     hasNextPage,
+//     isFetching,
+//     isFetchingNextPage,
+//     isLoading,
+//     status,
+//   };
+// }

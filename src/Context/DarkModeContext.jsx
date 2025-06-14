@@ -1,9 +1,54 @@
+// import { createContext, useContext, useEffect } from "react";
+// import { useLocalStorageState } from "../hooks/useLocalStorageState";
+// const DarkModeCnotext = createContext();
+
+// function DarkModeProvider({ children }) {
+//   const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, "isDarkMode");
+
+//   useEffect(
+//     function () {
+//       if (isDarkMode) {
+//         document.documentElement.classList.add("dark-mode");
+//         document.documentElement.classList.remove("light-mode");
+//       } else {
+//         document.documentElement.classList.add("light-mode");
+//         document.documentElement.classList.remove("dark-mode");
+//       }
+//     },
+//     [isDarkMode]
+//   );
+
+//   function toggleDarkMode() {
+//     setIsDarkMode((dark) => !dark);
+//   }
+
+//   return (
+//     <DarkModeProvider value={{ isDarkMode, toggleDarkMode }}>
+//       {children}
+//     </DarkModeProvider>
+//   );
+// }
+
+// function useDarkMode() {
+//   const context = useContext(DarkModeProvider);
+
+//   if (context === undefined)
+//     throw new Error("DarkMode was used outside the provider");
+
+//   return context;
+// }
+
+// export { DarkModeProvider, useDarkMode };
 import { createContext, useContext, useEffect } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
-const DarkModeCnotext = createContext();
+
+const DarkModeContext = createContext();
 
 function DarkModeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, "isDarkMode");
+  const [isDarkMode, setIsDarkMode] = useLocalStorageState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches,
+    "isDarkMode"
+  );
 
   useEffect(
     function () {
@@ -23,14 +68,14 @@ function DarkModeProvider({ children }) {
   }
 
   return (
-    <DarkModeProvider value={{ isDarkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
       {children}
-    </DarkModeProvider>
+    </DarkModeContext.Provider>
   );
 }
 
 function useDarkMode() {
-  const context = useContext(DarkModeProvider);
+  const context = useContext(DarkModeContext);
 
   if (context === undefined)
     throw new Error("DarkMode was used outside the provider");

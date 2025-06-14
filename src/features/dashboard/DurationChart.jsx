@@ -1,4 +1,14 @@
 import styled from "styled-components";
+import Heading from "../../ui/Heading";
+import {
+  PieChart,
+  ResponsiveContainer,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+} from "recharts";
+import { useDarkMode } from "../../Context/DarkModeContext";
 
 const ChartBox = styled.div`
   /* Box */
@@ -17,7 +27,14 @@ const ChartBox = styled.div`
     font-weight: 600;
   }
 `;
-
+const EmptyState = styled.div`
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-grey-500);
+  font-size: 1.6rem;
+`;
 const startDataLight = [
   {
     duration: "1 night",
@@ -130,3 +147,54 @@ function prepareData(startData, stays) {
 
   return data;
 }
+
+function DurationChart({ confirmedStays }) {
+  const { isDarkMode } = useDarkMode();
+  const startData = isDarkMode ? startDataDark : startDataLight;
+  const data = prepareData(startData, confirmedStays);
+  const hasData = data.length > 0;
+  // console.log(data);
+  return (
+    <ChartBox>
+      <Heading as="h2">Stay Duration summary</Heading>
+      {hasData ? (
+        <ResponsiveContainer width="100%" height={250}>
+          <PieChart width={730} height={250}>
+            <Pie
+              data={data}
+              nameKey="duration"
+              dataKey="value"
+              innerRadius={80}
+              outerRadius={110}
+              cx="40%"
+              cy="50%"
+              paddingAngle={3}
+            >
+              {data.map((entry) => (
+                <Cell
+                  fill={entry.color}
+                  stroke={entry.color}
+                  key={entry.duration}
+                />
+              ))}
+            </Pie>
+
+            <Tooltip />
+            <Legend
+              verticalAlign="middle"
+              align="right"
+              width="30%"
+              layout="vertical"
+              iconSize={15}
+              iconType="circle"
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      ) : (
+        <EmptyState>No stay duration data available</EmptyState>
+      )}
+    </ChartBox>
+  );
+}
+
+export default DurationChart;

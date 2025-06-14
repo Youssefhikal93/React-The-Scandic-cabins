@@ -9,26 +9,18 @@ import { useUpdateSettings } from "./useUpdateSettings";
 import { updateSetting } from "../../services/apiSettings";
 
 function UpdateSettingsForm() {
-  const {
-    isLoading,
-    data: {
-      minBookingLength,
-      maxBookingLength,
-      maxGuestsPerBooking,
-      breakfastPrice,
-    } = {},
-    error,
-  } = useSettings();
+  const { isLoading, settings, error } = useSettings();
 
   const { isEditing, editSetting } = useUpdateSettings();
+
   function handelUpdate(e, field) {
     const { value } = e.target;
-    console.log(value);
     if (!value) return;
     editSetting({ [field]: value });
   }
+
   if (isLoading) return <Spinner />;
-  if (error) return toast.error("coudln't get the default settings.");
+  if (error) return toast.error("Couldn't get the default settings.");
 
   return (
     <Form>
@@ -36,7 +28,7 @@ function UpdateSettingsForm() {
         <Input
           type="number"
           id="min-nights"
-          defaultValue={minBookingLength}
+          defaultValue={settings?.minBookingLength}
           disabled={isEditing}
           onBlur={(e) => handelUpdate(e, "minBookingLength")}
         />
@@ -45,7 +37,7 @@ function UpdateSettingsForm() {
         <Input
           type="number"
           id="max-nights"
-          defaultValue={maxBookingLength}
+          defaultValue={settings?.maxBookingLength}
           disabled={isEditing}
           onBlur={(e) => handelUpdate(e, "maxBookingLength")}
         />
@@ -54,7 +46,7 @@ function UpdateSettingsForm() {
         <Input
           type="number"
           id="max-guests"
-          defaultValue={maxGuestsPerBooking}
+          defaultValue={settings?.maxGuestsPerBooking}
           disabled={isEditing}
           onBlur={(e) => handelUpdate(e, "maxGuestsPerBooking")}
         />
@@ -63,7 +55,7 @@ function UpdateSettingsForm() {
         <Input
           type="number"
           id="breakfast-price"
-          defaultValue={breakfastPrice}
+          defaultValue={settings?.breakfastPrice}
           disabled={isEditing}
           onBlur={(e) => handelUpdate(e, "breakfastPrice")}
         />
@@ -71,5 +63,4 @@ function UpdateSettingsForm() {
     </Form>
   );
 }
-
 export default UpdateSettingsForm;

@@ -86,7 +86,7 @@ const Sidebar = forwardRef(({ isOpen, onOverlayClick }, ref) => {
       <StyledSidebar ref={ref} $isOpen={isOpen}>
         <Logo />
         <MainNav />
-        <Uploader />
+        {/* <Uploader /> */}
       </StyledSidebar>
     </>
   );

@@ -27,7 +27,7 @@ const StyledLogo = styled.div`
 
 const Img = styled.img`
   height: auto;
-  width: 50%;
+  width: 70%;
   /* width: ${(props) => (props.$isSidebarOpen ? "100%" : "4.6rem")}; */
   /* transition: all 0.3s; */
 `;
