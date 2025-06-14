@@ -39,6 +39,10 @@ const UserName = styled.span`
 
 function UserAvatar() {
   const { user } = useAuthunticatedUser();
+
+  // 🛡️ Prevent crash if user or user_metadata is missing
+  if (!user || !user.user_metadata) return null;
+
   const { fullName, avatar } = user.user_metadata;
   const displayName = fullName || user.email; // Fallback to email if no name
 
