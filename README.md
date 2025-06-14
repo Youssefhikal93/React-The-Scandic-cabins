@@ -2,7 +2,7 @@
 
 A modern cabin reservation system with booking management and interactive features.
 
-### [Live Demo](https://scandic-cabins.netlify.app/) <!-- Replace with your actual URL -->
+### [Live Demo](https://the-scandic-cabins-mangement.netlify.app/) <!-- Replace with your actual URL -->
 
 ## ✨ Features
 
