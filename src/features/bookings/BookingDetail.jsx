@@ -19,8 +19,13 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import Empty from "../../ui/Empty";
 const HeadingGroup = styled.div`
   display: flex;
-  gap: 2.4rem;
+  gap: 1.6rem;
   align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `;
 
 function BookingDetail() {

@@ -20,6 +20,10 @@ const StyledSalesChart = styled(DashboardBox)`
   & .recharts-cartesian-grid-vertical line {
     stroke: var(--color-grey-300);
   }
+
+  @media (max-width: 768px) {
+    padding: 1.6rem;
+  }
 `;
 
 // const isDarkMode = true;
@@ -65,7 +69,7 @@ function SalesChart({ bookings, numDays }) {
           "MMM dd yyyy"
         )}`}
       </Heading>
-      <ResponsiveContainer height={300} width="100%">
+      <ResponsiveContainer height={300} width="99%">
         <AreaChart data={data}>
           <XAxis
             dataKey="label"

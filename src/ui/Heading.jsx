@@ -4,10 +4,17 @@ const Heading = styled.h1`
   ${(props) =>
     props.as === "h1" &&
     css`
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 600;
-      margin-bottom: 3.2rem;
+      margin-bottom: 2rem;
     `}
+  @media (max-width: 768px) {
+    ${(props) =>
+      props.as === "h1" &&
+      css`
+        margin-bottom: 1.6rem;
+      `}
+  }
 
   ${(props) =>
     props.as === "h2" &&
@@ -16,7 +23,7 @@ const Heading = styled.h1`
       font-weight: 600;
 2    `}
 
-${(props) =>
+  ${(props) =>
     props.as === "h3" &&
     css`
       font-size: 2rem;

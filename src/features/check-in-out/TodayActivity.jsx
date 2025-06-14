@@ -18,6 +18,11 @@ const StyledToday = styled.div`
   gap: 2.4rem;
   grid-column: 1 / span 2;
   padding-top: 2.4rem;
+  grid-column: 1 / -1;
+
+  /* @media (min-width: 768px) {
+    grid-column: 1 / span 2;
+  } */
 `;
 
 const TodayList = styled.ul`
@@ -30,6 +35,9 @@ const TodayList = styled.ul`
   }
   scrollbar-width: none;
   -ms-overflow-style: none;
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1.2rem;
 `;
 
 const NoActivity = styled.p`

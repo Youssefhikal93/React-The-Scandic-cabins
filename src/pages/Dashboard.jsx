@@ -8,6 +8,9 @@ function Dashboard() {
     <>
       <Row type="horizontal">
         <Heading as="h1">Dashboard</Heading>
+      </Row>
+      <Row type="horizontal">
+        {/* <Heading as="h1">Dashboard</Heading> */}
         <DashboardFilter />
       </Row>
 

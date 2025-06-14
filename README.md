@@ -18,21 +18,27 @@ A modern cabin reservation system with booking management and interactive featur
   - Flexible date selection
   - Instant price calculation
 
+- 📊 **Dashboard Analytics**
+
+  - Stay duration charts
+  - Sales performance metrics
+  - Booking statistics
+
 - 🔐 **User Management**
   - Secure authentication
   - Booking history
-  - Favorite cabins list
+  - Account settings
 
 ## 🛠️ Technologies Used
 
 ⚛️ React.js (Vite)  
-🔥 Redux Toolkit (State management)  
 🔄 React Router (Navigation)  
 🎨 Styled Components (CSS-in-JS)  
 📊 Recharts (Data visualization)  
 📅 Date-fns (Date handling)  
-🔐 Supabase (Backend services)  
-📡 React Hook Form (Input handling)
+🔐 Supabase (PostgreSQL backend)  
+📡 React Hook Form (Input handling)  
+🌙 Dark Mode Context API
 
 ## 🚀 Getting Started
 

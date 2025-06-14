@@ -12,6 +12,13 @@ const StyledStat = styled.div`
   grid-template-rows: auto auto;
   column-gap: 1.6rem;
   row-gap: 0.4rem;
+  min-width: 20rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 4.8rem 1fr;
+    column-gap: 1.2rem;
+    padding: 1.2rem;
+  }
 `;
 
 const Icon = styled.div`
@@ -45,6 +52,7 @@ const Value = styled.p`
   font-size: 2.4rem;
   line-height: 1;
   font-weight: 500;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
 `;
 
 function Stat({ icon, title, value, color }) {
