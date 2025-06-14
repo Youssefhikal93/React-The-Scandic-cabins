@@ -1,4 +1,3 @@
-import { useForm } from "react-hook-form";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
@@ -6,7 +5,6 @@ import { useSettings } from "./useSettimgs";
 import Spinner from "../../ui/Spinner";
 import toast from "react-hot-toast";
 import { useUpdateSettings } from "./useUpdateSettings";
-import { updateSetting } from "../../services/apiSettings";
 
 function UpdateSettingsForm() {
   const { isLoading, settings, error } = useSettings();

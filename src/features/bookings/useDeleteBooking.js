@@ -1,11 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteBooking } from "../../services/apiBookings";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export function useDeleteBooking() {
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
   const { mutate: bookingDelete, isLoading: isDeletingBooking } = useMutation({
     mutationFn: (bookingId) => deleteBooking(bookingId),
     onSuccess: (_, bookingId) => {

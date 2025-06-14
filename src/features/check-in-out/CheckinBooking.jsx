@@ -40,8 +40,7 @@ function CheckinBooking() {
   );
   if (isLoading || isLoadingSeetings) return <Spinner />;
   if (!booking) return <p>Booking not found</p>;
-  const { id, guests, totalPrice, numGuests, hasBreakfast, numNights } =
-    booking;
+  const { guests, totalPrice, numGuests, hasBreakfast, numNights } = booking;
 
   const optionalBreakfastPrice =
     settings.breakfastPrice * numNights * numGuests;

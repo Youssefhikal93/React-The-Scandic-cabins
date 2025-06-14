@@ -47,19 +47,6 @@ A modern cabin reservation system with booking management and interactive featur
    git clone https://github.com/your-username/scandic-cabins.git
    ```
 
-## 📂 Project Structure
-
-src/
-├── components/ # Reusable UI components
-├── features/ # Feature modules
-│ ├── bookings # Booking functionality
-│ ├── cabins # Cabin displays
-│ └── dashboard # Admin dashboard
-├── hooks/ # Custom hooks
-├── services/ # API services
-├── styles/ # Global styles
-└── utils/ # Utility functions
-
 🤝 Contributing
 We welcome contributions! Please fork the repository and create a pull request with your improvements.
 
