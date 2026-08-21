@@ -29,7 +29,7 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import MainNav from "./MainNav";
 import { forwardRef } from "react";
-import Uploader from "../data/Uploader";
+import SeedData from "../data/SeedData";
 
 const StyledSidebar = styled.aside.attrs(() => ({}))`
   background-color: var(--color-grey-0);
@@ -86,7 +86,7 @@ const Sidebar = forwardRef(({ isOpen, onOverlayClick }, ref) => {
       <StyledSidebar ref={ref} $isOpen={isOpen}>
         <Logo />
         <MainNav />
-        {/* <Uploader /> */}
+        {isOpen && <SeedData />}
       </StyledSidebar>
     </>
   );
