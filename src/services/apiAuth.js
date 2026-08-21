@@ -1,5 +1,12 @@
 import supabase from "./supabase";
 
+// Guest accounts are created by the guest-facing website (Next app) with
+// role: "guest" in their metadata. They share the same Supabase Auth pool
+// as staff, so the management app must explicitly refuse them.
+function isGuestAccount(user) {
+  return user?.user_metadata?.role === "guest";
+}
+
 export async function signup({ fullName, email, password }) {
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -8,6 +15,7 @@ export async function signup({ fullName, email, password }) {
       data: {
         fullName,
         avatar: "",
+        role: "staff",
       },
     },
   });
@@ -34,6 +42,14 @@ export async function login({ email, password }) {
     throw new Error(error.message);
   }
 
+  // Guest-site accounts must never enter the management dashboard
+  if (isGuestAccount(data?.user)) {
+    await supabase.auth.signOut();
+    throw new Error(
+      "This is a guest account. It cannot access the management dashboard."
+    );
+  }
+
   return data;
 }
 
@@ -45,6 +61,14 @@ export async function getCurrentUser() {
   const { data, error } = await supabase.auth.getUser();
   if (error) {
     throw new Error(error.message);
+  }
+
+  // A guest session can appear here without going through login(): the
+  // signup confirmation email carries an access token in the URL, and the
+  // supabase client picks it up automatically. Kill such sessions on sight.
+  if (isGuestAccount(data?.user)) {
+    await supabase.auth.signOut();
+    return null;
   }
 
   return data?.user;
