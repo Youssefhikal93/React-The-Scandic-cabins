@@ -17,12 +17,16 @@ const FIRST_NAMES = [
   "Nils", "Elsa", "Anders", "Linnea", "Johan", "Saga", "Mikael", "Tuva",
   "Emma", "Noah", "Sofia", "Lucas", "Amir", "Leila", "Marco", "Chiara",
   "James", "Emily", "Pierre", "Camille", "Kenji", "Yuki",
+  "Youssef", "Fatima", "Omar", "Salma", "Tariq", "Amina", "Karim", "Nour",
+  "Kwame", "Zainab", "Chidi", "Ngozi", "Sipho", "Amara", "Tesfaye", "Wanjiru",
 ];
 
 const LAST_NAMES = [
   "Andersson", "Johansson", "Karlsson", "Nilsson", "Eriksson", "Larsson",
   "Olsen", "Hansen", "Berg", "Lindqvist", "Virtanen", "Korhonen",
   "Smith", "Müller", "Rossi", "Dubois", "García", "Tanaka", "Hassan", "Novak",
+  "Ibrahim", "El-Sayed", "Benali", "Al-Farsi", "Haddad", "Mansour",
+  "Okafor", "Mensah", "Diallo", "Abebe", "Mwangi", "Nkosi",
 ];
 
 const NATIONALITIES = [
@@ -38,6 +42,18 @@ const NATIONALITIES = [
   { nationality: "United States of America", code: "us" },
   { nationality: "Japan", code: "jp" },
   { nationality: "Netherlands", code: "nl" },
+  { nationality: "Egypt", code: "eg" },
+  { nationality: "Morocco", code: "ma" },
+  { nationality: "Tunisia", code: "tn" },
+  { nationality: "Saudi Arabia", code: "sa" },
+  { nationality: "United Arab Emirates", code: "ae" },
+  { nationality: "Jordan", code: "jo" },
+  { nationality: "Nigeria", code: "ng" },
+  { nationality: "Ghana", code: "gh" },
+  { nationality: "Kenya", code: "ke" },
+  { nationality: "Ethiopia", code: "et" },
+  { nationality: "Senegal", code: "sn" },
+  { nationality: "South Africa", code: "za" },
 ];
 
 const OBSERVATIONS = [
